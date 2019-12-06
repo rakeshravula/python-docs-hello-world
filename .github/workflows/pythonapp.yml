@@ -10,9 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Set up Python 3.7
-      uses: azure/webapps-deploy@v1
-      with:
-        creds: ${{ secrets.azureWebAppPublishProfile }}:  
+       
         - name: Setup Python 3.6
       uses: actions/setup-python@v1
       with:
@@ -32,3 +30,7 @@ jobs:
       run: |
         pip install pytest
         pytest
+     - name: 'Run Azure webapp deploy action using publish profile credentials'
+       uses: azure/webapps-deploy@v1
+      with:
+        creds: ${{ secrets.azureWebAppPublishProfile }}: 
